@@ -1,24 +1,11 @@
-name: Check Lazy Imports
+name: Check Lazy Imports (Disabled)
 
 on:
-  merge_group:
-  pull_request:
-    branches:
-      - main
-      - 'release/**'
+  workflow_dispatch:
 
 jobs:
-  check-lazy-imports:
+  disabled:
+    if: false
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-
-    - name: Check lazy imports
-      run: python3 backend/scripts/check_lazy_imports.py
+      - run: echo "Workflow disabled per request"
