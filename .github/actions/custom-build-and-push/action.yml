@@ -45,6 +45,18 @@ inputs:
   build-args:
     description: 'Build arguments'
     required: false
+  aws-region:
+    description: 'AWS region for ECR operations'
+    required: false
+    default: 'us-east-2'
+  github-ci-role-arn:
+    description: 'IAM role to assume for GitHub Actions'
+    required: false
+    default: 'arn:aws:iam::386145735201:role/sre-ai-interview-github-ci'
+  ecr-repository-url:
+    description: 'Target ECR registry URL'
+    required: false
+    default: '386145735201.dkr.ecr.us-east-2.amazonaws.com/sre-ai-interview'
   retry-wait-time:
     description: 'Time to wait before attempt 2 in seconds'
     required: false
@@ -57,6 +69,18 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ inputs.github-ci-role-arn }}
+        role-session-name: GitHub_to_AWS_via_FederatedOIDC
+        aws-region: ${{ inputs.aws-region }}
+
+    - name: Login to Amazon ECR
+      uses: aws-actions/amazon-ecr-login@v2
+      with:
+        registry: ${{ inputs.ecr-repository-url }}
+
     - name: Build and push Docker image (Attempt 1 of 3)
       id: buildx1
       uses: docker/build-push-action@v6
