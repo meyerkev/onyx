@@ -8,11 +8,11 @@ on:
 env:
   AWS_REGION: us-east-2
   AWS_ROLE_ARN: arn:aws:iam::386145735201:role/sre-ai-interview-github-ci
-  REGISTRY_IMAGE: 386145735201.dkr.ecr.us-east-2.amazonaws.com/sre-ai-interview
+  REGISTRY_IMAGE: 386145735201.dkr.ecr.us-east-2.amazonaws.com/sre-ai-interview-model-server
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04-arm64
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
