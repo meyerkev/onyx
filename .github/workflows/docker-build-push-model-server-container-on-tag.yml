@@ -16,7 +16,7 @@ env:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -33,9 +33,6 @@ jobs:
         with:
           registry: 386145735201.dkr.ecr.us-east-2.amazonaws.com
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -44,7 +41,7 @@ jobs:
         with:
           context: ./backend
           file: ./backend/Dockerfile.model_server
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: |
             ${{ env.REGISTRY_IMAGE }}:main
