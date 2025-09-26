@@ -8,7 +8,7 @@ on:
 env:
   AWS_REGION: us-east-2
   AWS_ROLE_ARN: arn:aws:iam::386145735201:role/sre-ai-interview-github-ci
-  REGISTRY_IMAGE: 386145735201.dkr.ecr.us-east-2.amazonaws.com/sre-ai-interview-web
+  REGISTRY_IMAGE: 386145735201.dkr.ecr.us-east-2.amazonaws.com/onyx-web
 
 jobs:
   build-and-push:
