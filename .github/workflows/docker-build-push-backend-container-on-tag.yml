@@ -51,3 +51,7 @@ jobs:
           build-args: |
             ONYX_VERSION=${{ github.sha }}
           provenance: false
+          cache-from: |
+            type=registry,ref=${{ env.REGISTRY_IMAGE }}:cache
+          cache-to: |
+            type=registry,ref=${{ env.REGISTRY_IMAGE }}:cache,mode=max
