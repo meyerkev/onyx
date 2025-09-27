@@ -55,8 +55,6 @@ export async function Layout({ children }: { children: React.ReactNode }) {
     documentSets,
     tags,
     llmProviders,
-    folders,
-    openedFolders,
     sidebarInitiallyVisible,
     defaultAssistantId,
     shouldShowWelcomeModal,
@@ -64,6 +62,7 @@ export async function Layout({ children }: { children: React.ReactNode }) {
     inputPrompts,
     proSearchToggled,
     availableTools,
+    projects,
   } = data;
 
   return (
@@ -81,10 +80,9 @@ export async function Layout({ children }: { children: React.ReactNode }) {
         availableDocumentSets: documentSets,
         availableTags: tags,
         llmProviders,
-        folders,
-        openedFolders,
         shouldShowWelcomeModal,
         defaultAssistantId,
+        projects,
       }}
     >
       <ClientLayout
