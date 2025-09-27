@@ -1,6 +1,7 @@
 name: Build and Push Web Image on Main
 
 on:
+  push:
 
 permissions:
   id-token: write
