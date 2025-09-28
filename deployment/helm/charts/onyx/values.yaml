@@ -158,9 +158,6 @@ nginx:
       value: localhost
   service:
     type: LoadBalancer
-    annotations:
-      service.beta.kubernetes.io/aws-load-balancer-ip-address-type: dualstack
-      service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
     ports:
       http: 80
       onyx: 3000
