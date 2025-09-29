@@ -1,0 +1,3 @@
+[submodule "sre_ai_interview"]
+	path = sre_ai_interview
+	url = https://github.com/meyerkev/sre_ai_interview.git
